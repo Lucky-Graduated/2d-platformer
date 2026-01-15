@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://vdr7enl2nr0b"]
+
+[ext_resource type="FontFile" uid="uid://3ykdyd286rsx" path="res://Assets/fonts/PixelOperator8.ttf" id="1_us0to"]
+
+[node name="Score_Count" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_fonts/font = ExtResource("1_us0to")
+text = "x 0"
