@@ -58,3 +58,7 @@ func shoot():
 	
 	_new_bullet.global_position = %ShootPivot.global_position
 	_new_bullet.global_rotation = %ShootPivot.global_rotation
+
+
+func die():
+	queue_free()

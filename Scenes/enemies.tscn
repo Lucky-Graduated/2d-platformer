@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b760b36pe00us"]
+[gd_scene load_steps=17 format=3 uid="uid://b760b36pe00us"]
 
 [ext_resource type="Texture2D" uid="uid://1q46dxhpoqu5" path="res://Assets/sprites/slime_green.png" id="1_444oi"]
 [ext_resource type="Script" uid="uid://doguno8i03h45" path="res://src/enemies.gd" id="1_rbk1d"]
@@ -92,6 +92,9 @@ size = Vector2(10, 8)
 [sub_resource type="CircleShape2D" id="CircleShape2D_rbk1d"]
 radius = 11.045361
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rbk1d"]
+size = Vector2(362, 15)
+
 [node name="Enemies" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 3
@@ -106,6 +109,7 @@ frame = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_444oi")
+debug_color = Color(0, 0, 0, 0.6862745)
 
 [node name="Get_Hurt" type="Area2D" parent="."]
 collision_layer = 0
@@ -114,5 +118,22 @@ collision_mask = 16
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Get_Hurt"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_rbk1d")
+debug_color = Color(0.961024, 2.5027991e-06, 0.5154511, 0.41960785)
+
+[node name="Detect_Player" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Detect_Player"]
+position = Vector2(0, 4.5)
+shape = SubResource("RectangleShape2D_rbk1d")
+debug_color = Color(0.65029216, 0.32928917, 1, 0.41960785)
+
+[node name="ShootPivot" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(9, 0)
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="Get_Hurt" to="." method="_on_get_hurt_area_entered"]
+[connection signal="body_entered" from="Detect_Player" to="." method="_on_detect_player_body_entered"]

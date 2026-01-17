@@ -10,6 +10,12 @@ var enemy_death_count = 0
 func _physics_process(_delta: float) -> void:
 	velocity.x = SPEED * direction * _delta
 	
+	if direction != 0:
+		if direction > 0:
+			%ShootPivot.rotation = 0
+		else:
+			%ShootPivot.rotation = PI
+	
 	move_and_slide()
 	
 	if is_on_wall():
@@ -23,7 +29,11 @@ func shoot():
 	const FIREBALL = preload("res://Scenes/fire_ball.tscn")
 	var fireball = FIREBALL.instantiate()
 
-	get_parent().add_child(fireball)
+	get_tree().current_scene.call_deferred("add_child", fireball)
 
 	fireball.global_position = %ShootPivot.global_position
 	fireball.global_rotation = %ShootPivot.global_rotation
+
+
+func _on_detect_player_body_entered(_body: Node2D) -> void:
+	shoot()

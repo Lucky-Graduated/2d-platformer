@@ -1,19 +1,22 @@
 extends Area2D
 
-var enemy = "res://Scenes/enemies.tscn"
-
 var travelled_distance = 0
+
 func _physics_process(_delta: float) -> void:
-	const _SPEED = 1000
-	const _RANGE = 1200
-	
-	var _direction = Vector2.RIGHT.rotated(rotation)
-	position += _direction * _SPEED * _delta
-	
-	travelled_distance += _SPEED *_delta
-	if travelled_distance > _RANGE:
+	const SPEED = 1000
+	const RANGE = 1200
+
+	var direction = Vector2.RIGHT.rotated(rotation)
+	position += direction * SPEED * _delta
+
+	travelled_distance += SPEED * _delta
+	if travelled_distance > RANGE:
 		queue_free()
 
 
 func _on_body_entered(_body: Node2D) -> void:
-	queue_free()
+	if _body.is_in_group("player"):
+		if _body.has_method("die"):
+			_body.die()
+
+	call_deferred("queue_free")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://diywe8s3vnlcl"
-path="res://.godot/imported/pixilart-sprite.png-ee4d441fadca466f4249d79d65217cac.ctex"
+uid="uid://c4866glyw8df1"
+path="res://.godot/imported/fireball.png-fa5f0d567eec0e5ec34d80e08239efe3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/pixilart-sprite.png"
-dest_files=["res://.godot/imported/pixilart-sprite.png-ee4d441fadca466f4249d79d65217cac.ctex"]
+source_file="res://Assets/fireball.png"
+dest_files=["res://.godot/imported/fireball.png-fa5f0d567eec0e5ec34d80e08239efe3.ctex"]
 
 [params]
 

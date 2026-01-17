@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://wkcam2kuolhf"]
+[gd_scene load_steps=31 format=3 uid="uid://wkcam2kuolhf"]
 
 [ext_resource type="Script" uid="uid://cxu3ktgfo7vun" path="res://src/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://d4c21m2mkw7hu" path="res://Assets/sprites/knight.png" id="1_v0iea"]
@@ -182,7 +182,10 @@ size = Vector2(10, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cvnsp"]
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_vgqql"]
+radius = 11.0
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 2
 collision_mask = 13
 script = ExtResource("1_cvnsp")
@@ -230,5 +233,14 @@ position = Vector2(0, 5)
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
+
+[node name="Dead_Detect" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Dead_Detect"]
+position = Vector2(0, 2)
+shape = SubResource("CircleShape2D_vgqql")
+debug_color = Color(0.97597116, 0, 0.41895896, 0.41960785)
 
 [connection signal="area_entered" from="Coin_collector" to="." method="_on_coin_collector_area_entered"]
